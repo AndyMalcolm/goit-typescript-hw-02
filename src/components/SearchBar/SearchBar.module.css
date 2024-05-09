@@ -1,10 +1,11 @@
 .searchHeader {
-  background-color: rgb(27, 189, 213);
+  background-color: #570481;
+  border-bottom: 1px solid #db2da7;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin-bottom: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .inputWrapper {
