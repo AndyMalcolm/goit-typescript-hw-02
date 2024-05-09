@@ -24,14 +24,12 @@
 }
 
 .searchButton {
-  background-color: transparent;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  font-size: 12px;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+  height: 40px;
+  padding: 5px;
+  background-color: #fff;
+  color: #fff;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  font-size: 16px;
+  cursor: pointer;
 }
