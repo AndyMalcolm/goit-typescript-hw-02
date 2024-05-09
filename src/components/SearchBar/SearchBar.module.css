@@ -2,8 +2,8 @@
   background-color: #570481;
   border-bottom: 1px solid #db2da7;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding-top: 10px;
   padding-bottom: 10px;
 }
