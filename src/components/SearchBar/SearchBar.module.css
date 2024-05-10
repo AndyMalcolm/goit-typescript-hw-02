@@ -1,16 +1,11 @@
 header {
-  padding-top: 10px;
-  padding-bottom: 10px;
   background-color: #570481;
   border-bottom: 1px solid #db2da7;
+  width: 100%;
+  margin-top: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
-
-/* .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
 form {
   position: relative;
   display: inline-block;
