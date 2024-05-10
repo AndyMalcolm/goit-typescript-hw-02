@@ -1,34 +1,48 @@
-import Modal from "react-modal";
-import css from "./ImageModal.module.css";
-import { Image } from "../App/App.types";
+import React, { FC } from 'react';
+import Modal from 'react-modal';
+import css from './ImageModal.module.css';
+import { Photo } from '../../types';
 
 interface ImageModalProps {
-  image: Image;
   isOpen: boolean;
-  bigImage: string;
-  imageDescription: string;
-  onClose: () => void;
+  photo?: Photo;
+  onRequestClose: () => void;
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({
-  isOpen,
-  bigImage,
-  imageDescription,
-  onClose,
-}) => (
-  <Modal
-    isOpen={isOpen}
-    onRequestClose={onClose}
-    className={css.modalContent}
-    overlayClassName={css.modalOverlay}
-  >
-    <div>
-      <img src={bigImage} alt={imageDescription} />
-      <div className={css.modalInfo}>
-        <p>{imageDescription}</p>
-      </div>
-    </div>
-  </Modal>
-);
+const customStyles = {
+  content: {
+    padding: '0',
+    background: 'unset',
+    overflow: 'unset',
+    border: 'none',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
-export default ImageModal;
+export const ImageModal: FC<ImageModalProps> = ({ isOpen, photo, onRequestClose }) => {
+  if (!photo) {
+    return null;
+  }
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      overlayClassName={css.overlay}
+      style={customStyles}
+    >
+      <button className={css.closeButton} onClick={onRequestClose}>x</button>
+        <img
+          src={photo.urls.regular}
+          alt={photo.alt_description}
+          className={css.imageModal}
+        />
+
+    </Modal>
+  );
+};

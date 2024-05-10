@@ -1,47 +1,54 @@
-import { useState, ChangeEvent } from "react";
-import { toast } from "react-hot-toast";
+import React, { FC, useState, ChangeEventHandler, FormEventHandler } from "react";
+import { FiSearch } from "react-icons/fi";
+import toast from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import css from "./SearchBar.module.css";
 
-type SearchBarProps = {
-  onSearch: (inputValue: string) => void;
-};
+interface SearchBarProps {
+  onSubmit: (query: string) => void;
+}
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = useState("");
+const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
+  const [value, setValue] = useState("");
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    if (!query.trim()) {
-      toast.error("Please enter a search query!");
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    const query = value.trim();
+    if (!query.length) {
+      toast.error('Please, enter your query', {
+        style: {
+          borderRadius: '8px',
+          background: 'linear-gradient(90deg, rgba(205,64,103,0.7826568859965861) 21%, rgba(41,0,255,1) 80%)',
+          color: '#fff',
+        },
+      });
       return;
     }
-
-    onSearch(query);
-    setQuery("");
+    onSubmit(query);
   };
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const { value } = e.target;
+    setValue(value);
   };
 
   return (
-    <header className={css.searchHeader}>
+    <header id="header">
       <form onSubmit={handleSubmit}>
-        <div className={css.inputWrapper}>
-          <input
-            className={css.searchInput}
-            type="text"
-            name="query"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            value={query}
-            onChange={handleChange}
-          />
-          <button className={css.searchButton} type="submit">
-            Search
-          </button>
-        </div>
+        <input
+          type="text"
+          value={value}
+          onChange={handleChange}
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+        />
+        <button className={css.searchBtn} type="submit" >
+          <FiSearch size="16px" />
+        </button>
       </form>
+      <Toaster position="top-left" aria-label="Search"/>
     </header>
   );
 };

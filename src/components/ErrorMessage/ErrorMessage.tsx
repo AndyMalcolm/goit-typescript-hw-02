@@ -1,18 +1,12 @@
-import css from "./ErrorMessage.module.css";
-import { ErrorMessageProps } from "./ErrorMessage.types";
+import React, { FC } from "react";
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({ message }) => {
-  return (
-    <div className={css.errorWrapper}>
-      {
-        message
-        // <p>
-        //   Oops, something went wrong. Give it another shot by refreshing the
-        //   page, please!
-        // </p>
-      }
-    </div>
-  );
+interface ErrorMessageProps {
+  message?: string;
+}
+const ErrorMessage: FC<ErrorMessageProps> = ({
+  message = "Oops, something went wrong, please reload the page!😢",
+}) => {
+  return <p>{message}</p>;
 };
 
 export default ErrorMessage;

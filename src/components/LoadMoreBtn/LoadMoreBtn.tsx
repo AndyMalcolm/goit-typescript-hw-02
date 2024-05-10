@@ -1,23 +1,15 @@
-import css from "./LoadMoreBtn.module.css";
-import { LoadMoreBtnProps } from "./LoadMoreBtn.types";
+import React, { FC, MouseEventHandler } from 'react';
+import css from './LoadMoreBtn.module.css';
 
-const LoadMoreBtn: React.FC<LoadMoreBtnProps> = ({ onLoadMore }) => {
-  const handleClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    onLoadMore();
-  };
+interface LoadMoreBtnProps {
+  loadMorePhotos: MouseEventHandler<HTMLButtonElement>;
+}
+
+const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ loadMorePhotos }) => {
   return (
-    <div className={css.loadMoreWrapper}>
-      <button
-        onClick={handleClick}
-        className={css.loadMoreButton}
-        type="button"
-      >
-        Load more
-      </button>
-    </div>
+    <button type="button" className={css.loadMoreBtn} onClick={loadMorePhotos}>
+      Load more
+    </button>
   );
 };
 

@@ -1,39 +1,23 @@
+import React, { FC, MouseEventHandler } from "react";
 import ImageCard from "../ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
-import { Image } from "../App/App.types";
+import { Photo } from "../../types";
 
-type ImageGalleryProps = {
-  images: Image[];
-  openModal: (image: Image) => void;
+interface ImageGalleryProps {
+  photos: Photo[];
+  handleImageClick: (photo: Photo) => void;
+}
+
+const ImageGallery: FC<ImageGalleryProps> = ({ photos, handleImageClick }) => {
+  return (
+    <ul className={css.ul}>
+      {photos.map((photo, index) => (
+        <li className={css.li} key={photo.id}>
+          <ImageCard photo={photo} onClick={() => handleImageClick(photo)} />
+        </li>
+      ))}
+    </ul>
+  );
 };
-
-const ImageGallery: React.FC<ImageGalleryProps> = ({ images, openModal }) => (
-  <ul className={css.galleryList}>
-    {images.map((image) => (
-      <li className={css.galleryListItem} key={image.id}>
-        <ImageCard
-          image={image}
-          onOpen={() =>
-            openModal({
-              bigImage: image.urls.regular,
-              description: image.description ?? "",
-              id: "",
-              urls: {
-                regular: "",
-                small: "",
-                big: "",
-              },
-              alt_description: "",
-              isOpen: false,
-              onClose: function (): void {
-                throw new Error("Function not implemented.");
-              },
-            })
-          }
-        />
-      </li>
-    ))}
-  </ul>
-);
 
 export default ImageGallery;

@@ -1,22 +1,23 @@
-import { InfinitySpin } from "react-loader-spinner";
-import { LoaderProps } from "./Loader.types";
+import React, { FC } from "react";
+import { RotatingLines } from "react-loader-spinner";
+const Loader: FC = () => {
 
-const Loader: React.FC<LoaderProps> = ({
-  color = "#4fa94d",
-  width = 200,
-  visible = true,
-  ariaLabel = "infinity-spin-loading",
-}) => {
+  const props={
+    visible: true,
+    height: 96,
+    width:"96",
+    color:"green",
+    strokeWidth:"5",
+    animationDuration:"0.75",
+    ariaLabel:"rotating-lines-loading",
+  }
+
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
-      <InfinitySpin
-        width={width.toString()}
-        color={color}
-        // visible={visible}
-        // ariaLabel={ariaLabel}
+    <div>
+      <RotatingLines
+      {...props}
       />
     </div>
   );
 };
-
 export default Loader;
