@@ -18,5 +18,5 @@
 .overlay {
   inset: 0;
   position: fixed;
-  background-color: lightgreen;
+  background-color: rgba(144, 238, 144, 0.455);
 }
