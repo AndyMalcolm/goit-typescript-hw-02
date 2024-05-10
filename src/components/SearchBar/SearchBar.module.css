@@ -1,3 +1,15 @@
+header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #570481;
+  border-bottom: 1px solid #db2da7;
+}
+
+/* .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 
 form {
   position: relative;
@@ -7,36 +19,6 @@ input {
   width: 250px;
   padding: 5px 5px 5px 30px;
 }
-
-header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #570481;
-  border-bottom: 1px solid #db2da7;
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* .input {
-  height: 40px;
-  max-width: 400px;
-  padding: 12px 16px;
-  border: none;
-  border-left: none;
-  border-radius: 0 10px 10px 0;
-  font-size: 16px;
-  flex: 1;
-  margin-right: 8px;
-} */
-
-.input:focus {
-  outline: none;
-}
-
 .searchBtn {
   position: absolute;
   top: 5px;
@@ -46,4 +28,3 @@ header {
   background-color: transparent;
   padding: 0;
 }
-
